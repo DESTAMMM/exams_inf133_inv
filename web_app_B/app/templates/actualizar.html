@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="subtitle is-2">Actualizar Usuario</h2>
+<form method="post" action="/users/{{ user.correo }}/update">
+    <div class="field">
+        <label for="name">Nombre:</label>
+        <div class="control">
+            <input type="text" id="name" name="name" 
+            required class="input" value="{{ user.name }}">
+        </div>
+    </div>
+    <div class="field">
+        <label for="role">Rol:</label>
+        <div class="control">
+            <input type="text" id="role" name="role" 
+            required class="input" value="{{ user.role }}">
+        </div>
+    </div>
+    <input type="submit" value="Actualizar" class="button is-primary">
+</form>
+
+{% endblock %}

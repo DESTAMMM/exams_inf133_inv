@@ -1,0 +1,6 @@
+flask
+flask-sqlalchemy
+Flask-Login
+Flask-JWT-Extended
+pytest
+pytest-flask
