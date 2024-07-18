@@ -11,7 +11,7 @@ user_bp = Blueprint("user", __name__)
 @user_bp.route("/")
 def index():
     if current_user.is_authenticated:
-        return redirect(url_for("user.profile", id=current_user.correo))
+        return redirect(url_for(".profiuserle", id=current_user.correo))
     return redirect(url_for("user.login"))
 
 @user_bp.route("/users")
