@@ -18,15 +18,15 @@
                 <a class="navbar-item" href="{{ url_for('session.list_sessions') }}">
                     Lista de Usuarios
                 </a>
-                <a class="navbar-item" href="{{ url_for('bath_product.create_product') }}">
-                    Crear Producto
+                <a class="navbar-item" href="{{ url_for('children_books.create_book') }}">
+                    Crear Libro
                 </a>
                 {% endif %}
-                <a class="navbar-item" href="{{ url_for('session.profile', correo=current_user.cuenta_correo) }}">
+                <a class="navbar-item" href="{{ url_for('session.profile', correo=current_user.correo_principal) }}">
                     Perfil
                 </a>
-                <a class="navbar-item" href="{{ url_for('bath_product.list_products') }}">
-                    Lista de Productos
+                <a class="navbar-item" href="{{ url_for('children_books.list_books') }}">
+                    Lista de Libros
                 </a>
                 <a class="navbar-item" href="{{ url_for('session.logout') }}">
                     Cerrar Sesión
@@ -34,8 +34,8 @@
             </div>
             {% if current_user.has_role("admin") %}
             <div class="navbar-end">
-                <a class="button is-light" href="{{ url_for('bath_product.download_pdf') }}">
-                    Descargar PDF de Productos de Baño
+                <a class="button is-light" href="{{ url_for('children_books.download_pdf') }}">
+                    Descargar PDF de Libros Infantiles
                 </a>
             </div>
             {% endif %}

@@ -4,15 +4,15 @@ from werkzeug.security import generate_password_hash
 from flask_login import UserMixin
 
 class SessionLogin(UserMixin,db.Model):
-    __tablename__ = "sessiones_login"
-    cuenta_correo = db.Column(db.String(255), unique=True, primary_key=True)
+    __tablename__ = "login_recuperatorio"
+    correo_principal = db.Column(db.String(255), unique=True, primary_key=True)
     nombre_usuario = db.Column(db.String(255), nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
     rol = db.Column(db.String(50), nullable=False)
     registration_date = db.Column(db.DateTime, nullable=False)
 
-    def __init__(self, cuenta_correo, nombre_usuario, password, rol):
-        self.cuenta_correo = cuenta_correo
+    def __init__(self, correo_principal, nombre_usuario, password, rol):
+        self.correo_principal = correo_principal
         self.nombre_usuario = nombre_usuario
         self.rol = rol
         self.set_password(password)
@@ -40,8 +40,8 @@ class SessionLogin(UserMixin,db.Model):
         return self.rol == role
     
     @staticmethod
-    def get_session_by_correo(cuenta_correo):
-        return SessionLogin.query.filter_by(cuenta_correo=cuenta_correo).first()
+    def get_session_by_correo(correo_principal):
+        return SessionLogin.query.filter_by(correo_principal=correo_principal).first()
     
     def get_id(self):
-        return self.cuenta_correo
+        return self.correo_principal

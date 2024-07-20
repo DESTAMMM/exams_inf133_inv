@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="subtitle is-2">Lista de Libros Infantiles</h2>
+<div class="columns is-multiline">
+    {% for book in books %}
+        <div class="column is-one-third">
+            <div class="card">
+                <div class="card-content">
+                    <div class="content">
+                        <p><strong>Título: {{ book.lin_titulo }} </strong></p>
+                        <p><strong>Autor: {{ book.lin_autor }}</strong></p>
+                        <p><strong>Género: {{ book.lin_genero }}</strong></p>
+                        <p><strong>Precio: {{ book.lin_precio }}</strong></p>
+                        <p><strong>Cantidad: {{ book.lin_cantidad }}</strong></p>
+                        <p><strong>Editorial: {{ book.lin_editorial }}</strong></p>
+                        <p><strong>Código de Barras: {{ book.lin_codigo_barra }}</strong></p>
+                        <p><strong>Idioma: {{ book.lin_idioma }}</strong></p>
+                        <p><strong>Páginas: {{ book.lin_paginas }}</strong></p>
+                        <p><strong>Formato: {{ book.lin_formato }}</strong></p>
+                        <p><strong>ISBN: {{ book.lin_isbn }}</strong></p>
+                        <p><strong>Descripción: {{ book.lin_descripcion }}</strong></p>
+                        <p><strong>Proveedor: {{ book.lin_proveedor }}</strong></p>
+                        <p><strong>Stock: {{ book.lin_stock }}</strong></p>
+                        <p><strong>Edad Recomendada: {{ book.lin_edad_recomendada }}</strong></p>
+                        <div class="buttons">
+                            {% if current_user.has_role('admin') %}
+                                <a href="{{ url_for('children_books.update_book', id=book.id) }}" 
+                                class="button is-info">Editar</a>
+                                <a href="{{ url_for('children_books.delete_book', id=book.id) }}" 
+                                class="button is-danger">Eliminar</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

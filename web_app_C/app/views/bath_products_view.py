@@ -11,12 +11,12 @@ def list_products(products):
 
 def create_product():
     return render_template(
-        "create_product.html", title="Crear Producto", current_user=current_user
+        "create_products.html", title="Crear Producto", current_user=current_user
     )
 
 def update_product(product):
     return render_template(
-        "update_product.html",
+        "update_products.html",
         title="Editar Producto",
         product=product,
         current_user=current_user,

@@ -1,6 +1,7 @@
 from flask import Blueprint, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import check_password_hash
+
 from models.session_login_model import SessionLogin
 from views import session_login_view
 from utils.decorators import role_required
@@ -10,7 +11,7 @@ session_bp = Blueprint("session", __name__)
 @session_bp.route("/")
 def index():
     if current_user.is_authenticated:
-        return redirect(url_for("session.profile", correo=current_user.cuenta_correo))
+        return redirect(url_for("session.profile", correo=current_user.correo_principal))
     return redirect(url_for("session.login"))
 
 @session_bp.route("/sessions")
@@ -30,7 +31,7 @@ def create_session():
         if existing_user:
             flash("El correo ya está en uso", "error")
             return redirect(url_for("session.create_session"))
-        session = SessionLogin(cuenta_correo=correo, nombre_usuario=name, password=password, rol=rol)
+        session = SessionLogin(correo_principal=correo, nombre_usuario=name, password=password, rol=rol)
         session.set_password(password)
         session.save()
         flash("Usuario registrado exitosamente", "success")
@@ -77,7 +78,7 @@ def login():
             if session.has_role("admin"):
                 return redirect(url_for("session.list_sessions"))
             else:
-                return redirect(url_for("session.profile", correo=session.cuenta_correo))
+                return redirect(url_for("session.profile", correo=session.correo_principal))
         else:
             flash("Correo o contraseña incorrectos", "error")
     return session_login_view.login()

@@ -9,11 +9,11 @@
                     <div class="card-content">
                         <div class="content">
                             <p><strong>Nombre: {{ session.nombre_usuario }}</strong></p>
-                            <p><strong>Correo: {{ session.cuenta_correo }}</strong></p>
+                            <p><strong>Correo: {{ session.correo_principal }}</strong></p>
                             <p><strong>Rol: {{ session.rol }}</strong></p>
                             <div class="buttons">
-                                <a href="{{ url_for('session.update_session', correo=session.cuenta_correo) }}" class="button is-info">Editar</a>
-                                <a href="{{ url_for('session.delete_session', correo=session.cuenta_correo) }}" class="button is-danger">Eliminar</a>
+                                <a href="{{ url_for('session.update_session', correo=session.correo_principal) }}" class="button is-info">Editar</a>
+                                <a href="{{ url_for('session.delete_session', correo=session.correo_principal) }}" class="button is-danger">Eliminar</a>
                             </div>
                         </div>
                     </div>

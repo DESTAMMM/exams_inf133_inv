@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="subtitle is-2">Editar Libro Infantil</h2>
+<form method="post">
+    <div class="field">
+        <label for="titulo">Título:</label>
+        <div class="control">
+            <input type="text" id="titulo" name="titulo" required class="input" value="{{ book.lin_titulo }}">
+        </div>
+    </div>
+    <div class="field">
+        <label for="autor">Autor:</label>
+        <div class="control">
+            <input type="text" id="autor" name="autor" required class="input" value="{{ book.lin_autor }}">
+        </div>
+    </div>
+    <div class="field">
+        <label for="genero">Género:</label>
+        <div class="control">
+            <input type="text" id="genero" name="genero" required class="input" value="{{ book.lin_genero }}">
+        </div>
+    </div>
+    <div class="field">
+        <label for="precio">Precio:</label>
+        <div class="control">
+            <input type="number" id="precio" name="precio" step="0.01" required class="input" value="{{ book.lin_precio }}">
+        </div>
+    </div>
+    <div class="field">
+        <label for="cantidad">Cantidad:</label>
+        <div class="control">
+            <input type="number" id="cantidad" name="cantidad" required class="input" value="{{ book.lin_cantidad }}">
+        </div>
+    </div>
+    <div class="field">
+        <label for="editorial">Editorial:</label>
+        <div class="control">
+            <input type="text" id="editorial" name="editorial" required class="input" value="{{ book.lin_editorial }}">
+        </div>
+    </div>
+    <div class="field">
+        <label for="codigo_barra">Código de Barras:</label>
+        <div class="control">
+            <input type="text" id="codigo_barra" name="codigo_barra" required class="input" value="{{ book.lin_codigo_barra }}">
+        </div>
+    </div>
+    <div class="field">
+        <label for="idioma">Idioma:</label>
+        <div class="control">
+            <input type="text" id="idioma" name="idioma" required class="input" value="{{ book.lin_idioma }}">
+        </div>
+    </div>
+    <div class="field">
+        <label for="paginas">Páginas:</label>
+        <div class="control">
+            <input type="number" id="paginas" name="paginas" required class="input" value="{{ book.lin_paginas }}">
+        </div>
+    </div>
+    <div class="field">
+        <label for="formato">Formato:</label>
+        <div class="control">
+            <input type="text" id="formato" name="formato" required class="input" value="{{ book.lin_formato }}">
+        </div>
+    </div>
+    <div class="field">
+        <label for="isbn">ISBN:</label>
+        <div class="control">
+            <input type="text" id="isbn" name="isbn" required class="input" value="{{ book.lin_isbn }}">
+        </div>
+    </div>
+    <div class="field">
+        <label for="descripcion">Descripción:</label>
+        <div class="control">
+            <textarea id="descripcion" name="descripcion" required class="textarea">{{ book.lin_descripcion }}</textarea>
+        </div>
+    </div>
+    <div class="field">
+        <label for="proveedor">Proveedor:</label>
+        <div class="control">
+            <input type="text" id="proveedor" name="proveedor" required class="input" value="{{ book.lin_proveedor }}">
+        </div>
+    </div>
+    <div class="field">
+        <label for="stock">Stock:</label>
+        <div class="control">
+            <input type="number" id="stock" name="stock" required class="input" value="{{ book.lin_stock }}">
+        </div>
+    </div>
+    <div class="field">
+        <label for="edad_recomendada">Edad Recomendada:</label>
+        <div class="control">
+            <input type="text" id="edad_recomendada" name="edad_recomendada" required class="input" value="{{ book.lin_edad_recomendada }}">
+        </div>
+    </div>
+    <input type="submit" value="Guardar Cambios" class="button is-primary">
+</form>
+{% endblock %}
