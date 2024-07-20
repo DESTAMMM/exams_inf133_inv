@@ -27,12 +27,17 @@ def create_session():
         name = request.form["name"]
         password = request.form["password"]
         rol = request.form["role"]
+        #comprobando si ya hay un usuario creado con el mismo correo
         existing_user = SessionLogin.get_session_by_correo(correo)
+        #si ya hay uno entonces redirige de nuevo para crear un nuevo usuario
         if existing_user:
             flash("El correo ya está en uso", "error")
             return redirect(url_for("session.create_session"))
+        #almacenando los datos del usuario
         session = SessionLogin(correo_principal=correo, nombre_usuario=name, password=password, rol=rol)
+        #generando un hash seguro para la contrasena
         session.set_password(password)
+        #almacenando el usuario en la base de datos
         session.save()
         flash("Usuario registrado exitosamente", "success")
         return redirect(url_for("session.list_sessions"))
@@ -75,6 +80,7 @@ def login():
         if session and check_password_hash(session.password_hash, password):
             login_user(session)
             flash("Inicio de sesión exitoso", "success")
+            #verificacion de roles 
             if session.has_role("admin"):
                 return redirect(url_for("session.list_sessions"))
             else:

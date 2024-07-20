@@ -19,6 +19,7 @@ class SessionLogin(UserMixin,db.Model):
         self.registration_date = datetime.now(timezone.utc)
 
     def set_password(self, password):
+        # generando un hash seguro y almacenable
         self.password_hash = generate_password_hash(password)
 
     def save(self):

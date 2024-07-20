@@ -7,9 +7,10 @@ from utils.decorators import role_required
 from io import BytesIO
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph,Spacer
 from reportlab.lib import colors
 from reportlab.lib.units import inch
+from reportlab.lib.styles import getSampleStyleSheet
 
 from flask import Blueprint
 
@@ -158,9 +159,11 @@ def download_pdf():
         ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
         ('GRID', (0, 0), (-1, -1), 1, colors.black),
     ]))
-
+    styles=getSampleStyleSheet()
+    title_style=styles['Title']
+    title=Paragraph("Libros Infantiles",title_style)
     # Crear el documento PDF
-    elements = [table]
+    elements = [title,Spacer(1,20),table]
     doc.build(elements)
 
     buffer.seek(0)
